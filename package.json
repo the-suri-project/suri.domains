@@ -1,0 +1,54 @@
+{
+  "name": "suri-domains-web",
+  "version": "0.1.0",
+  "description": "The client side of suri.domains website",
+  "productName": "suri.domains web",
+  "author": "Julio Treviño Páez <julio@treviware.com>",
+  "private": true,
+  "scripts": {
+    "lint": "eslint --ext .js,.ts,.vue ./",
+    "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
+    "dev": "quasar dev",
+    "build": "quasar build",
+    "build:debug": "quasar build --debug",
+    "serve": "serve dist/spa"
+  },
+  "dependencies": {
+    "@ethersproject/sha2": "^5.7.0",
+    "@metaplex-foundation/mpl-token-metadata": "^2.3.3",
+    "@quasar/extras": "^1.15.4",
+    "@solana/spl-token": "^0.3.5",
+    "@solana/wallet-adapter-base": "^0.9.17",
+    "@solana/wallet-adapter-wallets": "^0.19.0",
+    "@solana/web3.js": "^1.65.0",
+    "@vueuse/core": "^9.3.0",
+    "axios": "^0.27.2",
+    "bs58": "^5.0.0",
+    "ethers": "^5.7.2",
+    "pinia": "^2.0.22",
+    "quasar": "^2.8.4",
+    "vue": "^3.2.40",
+    "vue-i18n": "^9.2.2",
+    "vue-router": "^4.1.5"
+  },
+  "devDependencies": {
+    "@intlify/vite-plugin-vue-i18n": "^6.0.3",
+    "@quasar/app-vite": "^1.1.2",
+    "@types/node": "^12.20.21",
+    "@typescript-eslint/eslint-plugin": "^5.38.1",
+    "@typescript-eslint/parser": "^5.38.1",
+    "autoprefixer": "^10.4.12",
+    "dotenv": "^16.0.3",
+    "eslint": "8.22.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-vue": "^9.5.1",
+    "prettier": "^2.7.1",
+    "serve": "^14.0.1",
+    "typescript": "^4.8.4"
+  },
+  "engines": {
+    "node": "^18 || ^16 || ^14.19",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  }
+}

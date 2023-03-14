@@ -1,0 +1,161 @@
+@import "fonts";
+@import "animations";
+
+html {
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.text-code {
+  font-family: Inconsolata, monospace;
+}
+
+@each $name, $size in $spaces {
+  .gap-#{$name} {
+    gap: map-get($size, "x") map-get($size, "y");
+  }
+  .gap-x-#{$name} {
+    column-gap: map-get($size, "y");
+  }
+  .gap-y-#{$name} {
+    row-gap: map-get($size, "x");
+  }
+}
+
+// Sizes ----------------------------------------------------------------------
+.max-page-width {
+  width: 1280px;
+  max-width: 100vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Links ----------------------------------------------------------------------
+.link {
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.link-button {
+  cursor: pointer;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $primary !important;
+  }
+}
+
+.gradient-button {
+  font-weight: 900;
+  color: white;
+  font-size: 12px;
+  background-image: linear-gradient(
+                  90deg,
+                  #f5b14c 0%,
+                  #f59f43 16%,
+                  #a74891 50%,
+                  #d23edd 100%
+  );
+  transition: background-position 0.3s ease;
+  background-position: 0 0;
+  background-size: 200% 100%;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    background-position: 100% 0;
+  }
+}
+
+.yellow-gradient-button {
+  font-weight: 900;
+  color: white;
+  font-size: 12px;
+  background-image: linear-gradient(90deg, #f4d03e, #f59f43 58%);
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+}
+
+// Gradients ------------------------------------------------------------------
+.bg-gradient-theme-to-right {
+  background-image: linear-gradient(
+                  to right,
+                  #f5d279 10.8968%,
+                  #f5d15d 23.1844%,
+                  #f59f43 48.8827%,
+                  #8623b2 74.581%,
+                  #f54bf1 100%
+  );
+}
+
+.bg-gradient-background {
+  background-image: linear-gradient(
+                  0deg,
+                  #030c2c 0%,
+                  #250054 44.6927%,
+                  #310446 63.8434%
+  );
+}
+
+.bg-gradient-yellow-orange-to-right {
+  background-image: linear-gradient(to bottom, #f5d279, #f4d03e, #f59f43);
+}
+
+// Filters --------------------------------------------------------------------
+.grayscale-filter {
+  filter: grayscale(100%);
+}
+
+// Inputs ---------------------------------------------------------------------
+.input-bar {
+  width: 410px;
+  max-width: 80%;
+
+  .q-field__control {
+    padding-right: 8px;
+    background-color: rgb(255, 255, 255, 0.45) !important;
+  }
+
+  textarea,
+  input {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 16px;
+  }
+
+  &.q-field--highlighted {
+    .q-field__control {
+      background-color: rgb(255, 255, 255, 0.45) !important;
+    }
+
+    textarea,
+    input {
+      color: white !important;
+    }
+  }
+
+  .q-field__prepend {
+    padding-right: 10px;
+  }
+
+  &:deep(::placeholder) {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 16px;
+  }
+}

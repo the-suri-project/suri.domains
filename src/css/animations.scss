@@ -1,0 +1,29 @@
+.animated.expandIn {
+    animation-name: expandInAnim;
+    overflow-y: hidden;
+}
+
+.animated.expandOut {
+    animation-name: expandOutAnim;
+    overflow-y: hidden;
+}
+
+@keyframes expandInAnim {
+    from {
+        height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    to {
+    }
+}
+
+@keyframes expandOutAnim {
+    from {
+    }
+    to {
+        height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
