@@ -7,7 +7,7 @@ on:
 
 defaults:
   run:
-    working-directory: ./website
+    working-directory: ./
 
 jobs:
   deploy-gh-pages:
@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: 16
           cache: yarn
-          cache-dependency-path: ./website/yarn.lock
+          cache-dependency-path: ./yarn.lock
 
       - name: Install Deps
         run: yarn install --frozen-lockfile
@@ -44,5 +44,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: ./website/dist/spa
+          folder: ./dist/spa
 
