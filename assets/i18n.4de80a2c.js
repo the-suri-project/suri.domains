@@ -1,0 +1,1 @@
+import{a as e,c as l,m as s}from"./index.da45a023.js";const n=l({legacy:!1,locale:"en",fallbackLocale:"en",messages:s,fallbackWarn:!1,missingWarn:!1});var c=e(({app:a})=>{a.use(n)});export{c as default,n as globalI18n};
