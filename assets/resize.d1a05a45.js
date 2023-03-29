@@ -1,0 +1,1 @@
+import{b as i,u as o}from"./index.25e5d074.js";var n=i(()=>{window.addEventListener("resize",()=>{const e=o();e.windowWidth=window.innerWidth,e.windowHeight=window.innerHeight})});export{n as default};

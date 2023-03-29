@@ -1,0 +1,1 @@
+import{n as t,b as i}from"./index.25e5d074.js";const o={mounted(e){t(()=>{e.style.height=e.getBoundingClientRect().height+"px"})}};var n=i(({app:e})=>{e.directive("fixedHeight",o)});export{n as default};

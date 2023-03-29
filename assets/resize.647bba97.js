@@ -1,1 +1,0 @@
-import{a as i,u as o}from"./index.da45a023.js";var n=i(()=>{window.addEventListener("resize",()=>{const e=o();e.windowWidth=window.innerWidth,e.windowHeight=window.innerHeight})});export{n as default};
