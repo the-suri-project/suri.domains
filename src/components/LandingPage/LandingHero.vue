@@ -32,7 +32,6 @@ function openDocs() {
 }
 
 async function go() {
-    debugger;
     loading.value = true;
 
     try {
