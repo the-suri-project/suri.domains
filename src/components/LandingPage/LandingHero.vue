@@ -3,16 +3,18 @@ import {useI18n} from 'vue-i18n';
 import {computed, ref} from 'vue';
 import LandingCard from 'components/LandingPage/LandingCard.vue';
 import {useGlobalStore} from 'stores/global';
-import {useRouter} from 'vue-router';
+import {Query, QueryStandard} from '@suri-project/suns-sdk';
+import {solanaConnection} from 'boot/solana';
+import biri from 'biri';
 
 const {
     t,
     locale,
 } = useI18n();
-const router = useRouter();
 const globalStore = useGlobalStore();
 
 // REFS -----------------------------------------------------------------------
+const loading = ref(false);
 const search = ref('');
 
 // COMPUTED -------------------------------------------------------------------
@@ -29,8 +31,62 @@ function openDocs() {
     window.open(`https://docs.suri.domains${localeLink.value}/`, '_blank');
 }
 
-function goTo(name: string) {
-    router.push({name});
+async function go() {
+    debugger;
+    loading.value = true;
+
+    try {
+        const browserIdPromise = biri();
+        let query = Query.tryFromAnyFormat(search.value);
+
+        if (!query.standard) {
+            query = query.clone();
+            query.standard = new QueryStandard('web', null, null);
+        }
+
+        if (!query.standard.valueType) {
+            query.standard.valueType = 'URL';
+        }
+
+        // Resolve the query.
+        const queryResult = await query.execute(solanaConnection);
+
+        if (!queryResult.found) {
+            resolve();
+
+            loading.value = false;
+            return;
+        }
+
+        const urls = await queryResult.recordPage!.data.resolveUrl(solanaConnection, {
+            seeds: Buffer.from(await browserIdPromise),
+            maxHopes: 10,
+            maxResults: 1,
+        });
+
+        if (urls.length === 0) {
+            resolve();
+
+            loading.value = false;
+            return;
+        }
+
+        let url = urls[0].toString();
+
+        for (const replacement of query.replacements) {
+            url = replacement.processForUrl(url);
+        }
+
+        window.open(url, '_self');
+    } catch (e: any) {
+        resolve();
+    }
+
+    loading.value = false;
+}
+
+function resolve() {
+    window.open(`https://app.suri.domains/explorer/results?query=${encodeURIComponent(search.value)}`, '_self');
 }
 
 // WATCHES --------------------------------------------------------------------
@@ -63,34 +119,43 @@ function goTo(name: string) {
                     <div class="text-center" style="width: 400px; max-width: 100%">
                         <img src="~assets/landing/name.png" alt="suri" style="height: 70px"/>
                     </div>
-                    <!--                    <div class="q-mt-lg">-->
-                    <!--                        <q-input v-model="search"-->
-                    <!--                                 dense-->
-                    <!--                                 disable-->
-                    <!--                                 standout-->
-                    <!--                                 rounded-->
-                    <!--                                 class="searchbar q-mx-auto"-->
-                    <!--                                 :placeholder="t('inputPlaceholder')">-->
-                    <!--                            <template v-slot:prepend v-if="!globalStore.isMobile">-->
-                    <!--                                <q-icon name="fa-solid fa-search" color="white" size="16px"/>-->
-                    <!--                            </template>-->
-                    <!--                            <template v-slot:append>-->
-                    <!--                                <q-btn class="gradient-button q-px-md"-->
-                    <!--                                       flat-->
-                    <!--                                       dense-->
-                    <!--                                       rounded-->
-                    <!--                                       no-caps-->
-                    <!--                                       v-if="!globalStore.isMobile">{{ t('searchButton') }}-->
-                    <!--                                </q-btn>-->
-                    <!--                                <q-btn class="gradient-button q-px-md" flat dense round no-caps v-else>-->
-                    <!--                                    <q-icon name="fa-solid fa-search"-->
-                    <!--                                            class="flip-horizontal"-->
-                    <!--                                            color="white"-->
-                    <!--                                            size="16px"/>-->
-                    <!--                                </q-btn>-->
-                    <!--                            </template>-->
-                    <!--                        </q-input>-->
-                    <!--                    </div>-->
+                    <div class="q-mt-lg">
+                        <q-input v-model="search"
+                                 dense
+                                 standout
+                                 rounded
+                                 class="searchbar q-mx-auto"
+                                 @keydown.enter="go"
+                                 :placeholder="t('inputPlaceholder')">
+                            <template v-slot:prepend v-if="!globalStore.isMobile">
+                                <q-icon name="fa-solid fa-search" color="white" size="16px"/>
+                            </template>
+                            <template v-slot:append>
+                                <q-btn class="gradient-button q-px-md"
+                                       flat
+                                       dense
+                                       rounded
+                                       no-caps
+                                       @click="go"
+                                       :loading="loading"
+                                       v-if="!globalStore.isMobile">{{ t('searchButton') }}
+                                </q-btn>
+                                <q-btn class="gradient-button q-px-md"
+                                       flat
+                                       dense
+                                       round
+                                       no-caps
+                                       v-else
+                                       @click="go"
+                                       :loading="loading">
+                                    <q-icon name="fa-solid fa-search"
+                                            class="flip-horizontal"
+                                            color="white"
+                                            size="16px"/>
+                                </q-btn>
+                            </template>
+                        </q-input>
+                    </div>
                 </div>
             </div>
         </div>

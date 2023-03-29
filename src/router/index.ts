@@ -1,13 +1,7 @@
-import { route } from 'quasar/wrappers';
-import {
-    createMemoryHistory,
-    createRouter,
-    createWebHashHistory,
-    createWebHistory,
-} from 'vue-router';
+import {route} from 'quasar/wrappers';
+import {createMemoryHistory, createRouter, createWebHashHistory, createWebHistory} from 'vue-router';
 
 import routes from './routes';
-import { useWallet } from 'src/lib/WalletAdapter';
 
 /*
  * If not building with SSR mode, you can
@@ -19,11 +13,8 @@ import { useWallet } from 'src/lib/WalletAdapter';
  */
 
 export default route(function (/* { store, ssrContext } */) {
-    const createHistory = process.env.SERVER
-        ? createMemoryHistory
-        : process.env.VUE_ROUTER_MODE === 'history'
-        ? createWebHistory
-        : createWebHashHistory;
+    const createHistory = process.env.SERVER ? createMemoryHistory :
+        process.env.VUE_ROUTER_MODE === 'history' ? createWebHistory : createWebHashHistory;
 
     const Router = createRouter({
         scrollBehavior: () => ({
@@ -45,10 +36,6 @@ export default route(function (/* { store, ssrContext } */) {
 
         if (to.meta.walletMissingRedirect) {
             setTimeout(() => {
-                if (!useWallet().connected.value) {
-                    return next(to.meta.walletMissingRedirect);
-                }
-
                 return next();
             }, 300);
             return;

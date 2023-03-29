@@ -37,6 +37,10 @@ function goToDocs() {
     window.open('https://docs.suri.domains', '_blank');
 }
 
+function goToApp() {
+    window.open('https://app.suri.domains', '_self');
+}
+
 function goToTwitter() {
     window.open(TWITTER_URL, '_blank');
 }
@@ -101,6 +105,9 @@ onMounted(() => {
 
                     <template v-if="!globalStore.isMobile">
                         <div class="menu-buttons row">
+                            <q-btn class="gradient-button q-px-md q-mr-md" flat dense no-caps @click="goToApp">
+                                {{ t('appButton') }}
+                            </q-btn>
                             <div class="menu-button link-button" @click="goToDocs">
                                 {{ t('docsButton') }}
                             </div>
@@ -115,7 +122,7 @@ onMounted(() => {
                     </template>
                     <template v-else>
                         <div class="menu-buttons row">
-                            <q-btn class="gradient-button q-px-md" flat dense no-caps @click="goTo('Bookings')">
+                            <q-btn class="gradient-button q-px-md" flat dense no-caps @click="goToApp">
                                 {{ t('appButton') }}
                             </q-btn>
                         </div>

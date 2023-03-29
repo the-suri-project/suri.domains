@@ -1,6 +1,5 @@
-import { boot } from 'quasar/wrappers';
-import axios, { AxiosInstance } from 'axios';
-import { API_URL } from 'src/constant';
+import {boot} from 'quasar/wrappers';
+import axios, {AxiosInstance} from 'axios';
 
 declare module '@vue/runtime-core' {
     interface ComponentCustomProperties {
@@ -8,11 +7,11 @@ declare module '@vue/runtime-core' {
     }
 }
 
-const api = axios.create({ baseURL: API_URL });
+const api = axios.create();
 
-export default boot(({ app }) => {
+export default boot(({app}) => {
     app.config.globalProperties.$axios = axios;
     app.config.globalProperties.$api = api;
 });
 
-export { api };
+export {api};

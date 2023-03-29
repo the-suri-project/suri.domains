@@ -32,10 +32,10 @@ module.exports = configure(function (/* ctx */) {
             'polyfill',
             'i18n',
             'axios',
-            'wallets',
             'resize',
             'directives',
             'particles',
+            'solana',
         ],
 
         // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#css
