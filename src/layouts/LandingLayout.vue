@@ -105,9 +105,9 @@ onMounted(() => {
 
                     <template v-if="!globalStore.isMobile">
                         <div class="menu-buttons row">
-                            <q-btn class="gradient-button q-px-md q-mr-md" flat dense no-caps @click="goToApp">
-                                {{ t('appButton') }}
-                            </q-btn>
+                            <!--                            <q-btn class="gradient-button q-px-md q-mr-md" flat dense no-caps @click="goToApp">-->
+                            <!--                                {{ t('appButton') }}-->
+                            <!--                            </q-btn>-->
                             <div class="menu-button link-button" @click="goToDocs">
                                 {{ t('docsButton') }}
                             </div>
@@ -121,11 +121,11 @@ onMounted(() => {
                         </div>
                     </template>
                     <template v-else>
-                        <div class="menu-buttons row">
-                            <q-btn class="gradient-button q-px-md" flat dense no-caps @click="goToApp">
-                                {{ t('appButton') }}
-                            </q-btn>
-                        </div>
+                        <!--                        <div class="menu-buttons row">-->
+                        <!--                            <q-btn class="gradient-button q-px-md" flat dense no-caps @click="goToApp">-->
+                        <!--                                {{ t('appButton') }}-->
+                        <!--                            </q-btn>-->
+                        <!--                        </div>-->
                         <q-btn flat
                                round
                                dense
@@ -148,11 +148,11 @@ onMounted(() => {
                 <div class="menu-button link-button" @click="goToDocs">
                     {{ t('docsButton') }}
                 </div>
-                <div class="menu-button q-mt-lg">
-                    <q-btn class="gradient-button q-px-md" flat dense no-caps @click="goTo('Bookings')">
-                        {{ t('appButton') }}
-                    </q-btn>
-                </div>
+                <!--                <div class="menu-button q-mt-lg">-->
+                <!--                    <q-btn class="gradient-button q-px-md" flat dense no-caps @click="goToApp">-->
+                <!--                        {{ t('appButton') }}-->
+                <!--                    </q-btn>-->
+                <!--                </div>-->
                 <div class="row flex-center q-mt-xl">
                     <div class="menu-button link-button"
                          @click="changeLocale('en')"
@@ -238,196 +238,200 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .q-header {
-    background-color: rgba(3, 12, 44, 0.8);
+  background-color: rgba(3, 12, 44, 0.8);
 
-    .q-toolbar {
-        height: 68px;
+  .q-toolbar {
+    height: 68px;
+  }
+
+  .header-border {
+    height: 2px;
+  }
+
+  .menu-button {
+    font-size: 16px;
+    font-weight: bold;
+
+    &:last-of-type {
+      margin-right: 0;
     }
+  }
 
-    .header-border {
-        height: 2px;
+  .social-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-right: 12px;
+
+    &:last-of-type {
+      margin-right: 0;
     }
+  }
 
-    .menu-button {
-        font-size: 16px;
-        font-weight: bold;
-
-        &:last-of-type {
-            margin-right: 0;
-        }
-    }
-
-    .social-button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 20px;
-        margin-right: 12px;
-
-        &:last-of-type {
-            margin-right: 0;
-        }
-    }
+  .logo {
+    height: 38px;
+  }
 }
 
 footer {
-    background-color: rgba(3, 12, 44, 0.44);
+  background-color: rgba(3, 12, 44, 0.44);
 
-    .q-toolbar {
-        height: 68px;
+  .q-toolbar {
+    height: 68px;
+  }
+
+  .social-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #87888a;
+  }
+
+  a {
+    text-decoration: none !important;
+
+    &:hover {
+      font-weight: 400;
+      color: $primary;
     }
-
-    .social-button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 24px;
-        color: #87888a;
-    }
-
-    a {
-        text-decoration: none !important;
-
-        &:hover {
-            font-weight: 400;
-            color: $primary;
-        }
-    }
+  }
 }
 
 .q-page-container {
-    padding-top: 0 !important;
-    background-color: #250054;
+  padding-top: 0 !important;
+  background-color: #250054;
 }
 
 #particles-js:deep(canvas) {
-    display: block;
+  display: block;
 }
 
 .bg-container {
-    overflow: hidden;
+  overflow: hidden;
 
-    .tail-top {
-        position: absolute;
-        background-image: url("assets/landing/bg-tail-top.png");
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
-        $width: 1000px;
-        height: $width * 1226 / 993;
-        width: $width;
-        top: 50vh;
-        left: 50%;
-        transform: translateX(-24%) translateY(-65%);
-    }
+  .tail-top {
+    position: absolute;
+    background-image: url("assets/landing/bg-tail-top.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    $width: 1000px;
+    height: $width * 1226 / 993;
+    width: $width;
+    top: 50vh;
+    left: 50%;
+    transform: translateX(-24%) translateY(-65%);
+  }
 
-    .net-top {
-        position: absolute;
-        background-image: url("assets/landing/bg-net.svg");
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
-        $height: 1000px;
-        height: $height;
-        width: $height * 1360 / 1039;
-        top: 50vh;
-        right: 50%;
-        transform: translateX(11%) translateY(25%);
-    }
+  .net-top {
+    position: absolute;
+    background-image: url("assets/landing/bg-net.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    $height: 1000px;
+    height: $height;
+    width: $height * 1360 / 1039;
+    top: 50vh;
+    right: 50%;
+    transform: translateX(11%) translateY(25%);
+  }
 }
 
 .q-scrollarea:deep(.q-scrollarea__container) {
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 // MOBILE ---------------------------------------------------------------------
 .suri-mobile {
-    .q-header {
-        transition: background-color 0.3s ease;
+  .q-header {
+    transition: background-color 0.3s ease;
 
-        &.drawer-open {
-            background-color: rgba(3, 12, 44, 1);
-        }
-
-        .q-toolbar {
-            height: 56px;
-        }
-
-        .logo {
-            height: 28px !important;
-        }
+    &.drawer-open {
+      background-color: rgba(3, 12, 44, 1);
     }
 
-    footer {
-        .q-toolbar {
-            height: 56px;
-        }
-
-        .name {
-            height: 20px !important;
-        }
-
-        .social-button {
-            font-size: 20px;
-        }
+    .q-toolbar {
+      height: 56px;
     }
 
-    .mobile-menu {
-        position: absolute;
-        top: 58px;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 3000;
+    .logo {
+      height: 28px !important;
+    }
+  }
 
-        .container {
-            width: 288px;
-            max-width: 80vw;
-        }
-
-        .menu-button {
-            font-size: 16px;
-            font-weight: bold;
-            text-align: center;
-
-            .gradient-button {
-                font-size: 14px;
-            }
-
-            &:last-of-type {
-                margin-right: 0;
-            }
-        }
-
-        .social-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-        }
+  footer {
+    .q-toolbar {
+      height: 56px;
     }
 
-    .bg-container {
-        overflow: hidden;
-
-        .tail-top {
-            $width: 800px;
-            height: $width * 1226 / 993;
-            width: $width;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%) translateY(-48%);
-        }
-
-        .net-top {
-            $height: 500px;
-            height: $height;
-            width: $height * 1360 / 1039;
-            top: 460px;
-            right: 50%;
-            transform: translateX(11%) translateY(25%);
-        }
+    .name {
+      height: 20px !important;
     }
+
+    .social-button {
+      font-size: 20px;
+    }
+  }
+
+  .mobile-menu {
+    position: absolute;
+    top: 58px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3000;
+
+    .container {
+      width: 288px;
+      max-width: 80vw;
+    }
+
+    .menu-button {
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+
+      .gradient-button {
+        font-size: 14px;
+      }
+
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+
+    .social-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+  }
+
+  .bg-container {
+    overflow: hidden;
+
+    .tail-top {
+      $width: 800px;
+      height: $width * 1226 / 993;
+      width: $width;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%) translateY(-48%);
+    }
+
+    .net-top {
+      $height: 500px;
+      height: $height;
+      width: $height * 1360 / 1039;
+      top: 460px;
+      right: 50%;
+      transform: translateX(11%) translateY(25%);
+    }
+  }
 }
 </style>
 

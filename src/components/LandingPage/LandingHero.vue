@@ -118,43 +118,34 @@ function resolve() {
                     <div class="text-center" style="width: 400px; max-width: 100%">
                         <img src="~assets/landing/name.png" alt="suri" style="height: 70px"/>
                     </div>
-                    <div class="q-mt-lg">
-                        <q-input v-model="search"
-                                 dense
-                                 standout
-                                 rounded
-                                 class="searchbar q-mx-auto"
-                                 @keydown.enter="go"
-                                 :placeholder="t('inputPlaceholder')">
-                            <template v-slot:prepend v-if="!globalStore.isMobile">
-                                <q-icon name="fa-solid fa-search" color="white" size="16px"/>
-                            </template>
-                            <template v-slot:append>
-                                <q-btn class="gradient-button q-px-md"
-                                       flat
-                                       dense
-                                       rounded
-                                       no-caps
-                                       @click="go"
-                                       :loading="loading"
-                                       v-if="!globalStore.isMobile">{{ t('searchButton') }}
-                                </q-btn>
-                                <q-btn class="gradient-button q-px-md"
-                                       flat
-                                       dense
-                                       round
-                                       no-caps
-                                       v-else
-                                       @click="go"
-                                       :loading="loading">
-                                    <q-icon name="fa-solid fa-search"
-                                            class="flip-horizontal"
-                                            color="white"
-                                            size="16px"/>
-                                </q-btn>
-                            </template>
-                        </q-input>
-                    </div>
+                    <!--                    <div class="q-mt-lg">-->
+                    <!--                        <q-input v-model="search"-->
+                    <!--                                 dense-->
+                    <!--                                 disable-->
+                    <!--                                 standout-->
+                    <!--                                 rounded-->
+                    <!--                                 class="searchbar q-mx-auto"-->
+                    <!--                                 :placeholder="t('inputPlaceholder')">-->
+                    <!--                            <template v-slot:prepend v-if="!globalStore.isMobile">-->
+                    <!--                                <q-icon name="fa-solid fa-search" color="white" size="16px"/>-->
+                    <!--                            </template>-->
+                    <!--                            <template v-slot:append>-->
+                    <!--                                <q-btn class="gradient-button q-px-md"-->
+                    <!--                                       flat-->
+                    <!--                                       dense-->
+                    <!--                                       rounded-->
+                    <!--                                       no-caps-->
+                    <!--                                       v-if="!globalStore.isMobile">{{ t('searchButton') }}-->
+                    <!--                                </q-btn>-->
+                    <!--                                <q-btn class="gradient-button q-px-md" flat dense round no-caps v-else>-->
+                    <!--                                    <q-icon name="fa-solid fa-search"-->
+                    <!--                                            class="flip-horizontal"-->
+                    <!--                                            color="white"-->
+                    <!--                                            size="16px"/>-->
+                    <!--                                </q-btn>-->
+                    <!--                            </template>-->
+                    <!--                        </q-input>-->
+                    <!--                    </div>-->
                 </div>
             </div>
         </div>
